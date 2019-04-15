@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.3" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.head.first.pizzafactory.PepperoniPizza" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/PepperoniPizza.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="218" x="654" y="302"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.head.first.pizzafactory.ClamPizza" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/ClamPizza.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1468" y="351"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="3" language="java" name="com.head.first.pizzafactory.Dough" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/Dough.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="125" x="2341" y="302"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="4" language="java" name="com.head.first.pizzafactory.Onion" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/Onion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="125" x="537" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.head.first.pizzafactory.ChicagoPizzaStore" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/ChicagoPizzaStore.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="148" x="1800" y="302"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.head.first.pizzafactory.ThinCrustDough" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/ThinCrustDough.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2475" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.head.first.pizzafactory.PlumTomatoSauce" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/PlumTomatoSauce.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1612" y="496"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.head.first.pizzafactory.ParmesanCheese" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/ParmesanCheese.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1913" y="175"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.head.first.pizzafactory.FrozenClams" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/FrozenClams.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2614" y="514"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="10" language="java" name="com.head.first.pizzafactory.PizzaIngredientFactory" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/PizzaIngredientFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="164" x="741" y="531"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="11" language="java" name="com.head.first.pizzafactory.Cheese" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/Cheese.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1700" y="134"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="12" language="java" name="com.head.first.pizzafactory.MozzarellaCheese" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/MozzarellaCheese.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1886" y="58"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.head.first.pizzafactory.Garlic" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/Garlic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="125" x="207" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="14" language="java" name="com.head.first.pizzafactory.Sauce" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/Sauce.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1646" y="347"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="15" language="java" name="com.head.first.pizzafactory.ReggianoCheese" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/ReggianoCheese.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1553" y="66"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="com.head.first.pizzafactory.CheesePizza" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/CheesePizza.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="207" x="912" y="302"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="com.head.first.pizzafactory.Spinach" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/Spinach.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="125" x="42" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="18" language="java" name="com.head.first.pizzafactory.Veggies" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/Veggies.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="499" y="259"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="19" language="java" name="com.head.first.pizzafactory.ChicagoPizzaIngredientFactory" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/ChicagoPizzaIngredientFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="251" y="409"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="com.head.first.pizzafactory.RedPepper" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/RedPepper.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="125" x="867" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="com.head.first.pizzafactory.VeggiePizza" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/VeggiePizza.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="203" x="1159" y="302"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="com.head.first.pizzafactory.NYPizzaStore" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/NYPizzaStore.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="148" x="1988" y="302"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="com.head.first.pizzafactory.MarinaraSauce" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/MarinaraSauce.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1750" y="492"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="com.head.first.pizzafactory.BlackOlives" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/BlackOlives.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="125" x="702" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="com.head.first.pizzafactory.FreshClams" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/FreshClams.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2755" y="518"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="com.head.first.pizzafactory.ThickCrustDough" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/ThickCrustDough.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2344" y="519"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="com.head.first.pizzafactory.SlicedPepperoni" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/SlicedPepperoni.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2200" y="522"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="com.head.first.pizzafactory.Eggplant" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/Eggplant.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="125" x="372" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="29" language="java" name="com.head.first.pizzafactory.Pepperoni" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/Pepperoni.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="125" x="2176" y="302"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="30" language="java" name="com.head.first.pizzafactory.Mushroom" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/Mushroom.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="125" x="1032" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="com.head.first.pizzafactory.PizzaStore" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/PizzaStore.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1992" y="526"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="32" language="java" name="com.head.first.pizzafactory.Clams" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/Clams.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="125" x="2506" y="302"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="33" language="java" name="com.head.first.pizzafactory.NYPizzaIngredientFactory" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/NYPizzaIngredientFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="418" y="613"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="com.head.first.pizzafactory.Pizza" project="PizzaFactory" 
+    file="/PizzaFactory/src/main/java/com/head/first/pizzafactory/Pizza.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="127" x="1315" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="35">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <realization id="36">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="18"/>  
+  </realization>  
+  <realization id="37">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="18"/>  
+  </realization>  
+  <generalization id="38">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="34"/>  
+  </generalization>  
+  <realization id="39">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <association id="40">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="41" name="dough"/>      
+      <multiplicity id="42" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="43">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <association id="44">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="45" name="ingredientFactory"/>      
+      <multiplicity id="46" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="47">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="48" name="veggies"/>      
+      <multiplicity id="49" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="50">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <association id="51">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="52" name="sauce"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="55" name="ingredientFactory"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="57">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <realization id="58">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <association id="59">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="60" name="cheese"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="62">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="18"/>  
+  </realization>  
+  <realization id="63">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="32"/>  
+  </realization>  
+  <realization id="64">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <association id="65">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="66" name="ingredientFactory"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="68">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <realization id="69">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="18"/>  
+  </realization>  
+  <realization id="70">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="29"/>  
+  </realization>  
+  <realization id="71">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="18"/>  
+  </realization>  
+  <realization id="72">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="18"/>  
+  </realization>  
+  <generalization id="73">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="34"/>  
+  </generalization>  
+  <realization id="74">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="32"/>  
+  </realization>  
+  <association id="75">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="76" name="pepperoni"/>      
+      <multiplicity id="77" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="78">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <generalization id="79">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="34"/>  
+  </generalization>  
+  <generalization id="80">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="34"/>  
+  </generalization>  
+  <realization id="81">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <association id="82">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="83" name="ingredientFactory"/>      
+      <multiplicity id="84" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="85">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <association id="86">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="87" name="clam"/>      
+      <multiplicity id="88" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="89">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="18"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
