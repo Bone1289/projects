@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="1-java-concurrent-patterns-advanced-m1-exercise-files/01_executors-futures/src"/>
+	<classpathentry kind="src" path="2-java-concurrent-patterns-advanced-m2-exercise-files/02_Locks/src"/>
+	<classpathentry kind="src" path="3-java-concurrent-patterns-advanced-m3-exercise-files/03_Barrier/src"/>
+	<classpathentry kind="src" path="4-java-concurrent-patterns-advanced-m4-exercise-files/04_AtomicCounter/src"/>
+	<classpathentry kind="src" path="5-java-concurrent-patterns-advanced-m5-exercise-files/05_ConcurrentQueuesAndMaps/src"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
