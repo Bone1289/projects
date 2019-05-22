@@ -9,6 +9,12 @@ public class PercolationStats {
     private final double confidenceHi;
 
 
+    /**
+     * Generate Percolation status with NxN grid
+     *
+     * @param N NxN grid
+     * @param T Number of independent experiments
+     */
     public PercolationStats(int N, int T) { // perform T independent experiments on an N-by-N grid
         if (N <= 0) {
             throw new IllegalArgumentException("The grid size must be bigger than zero");
