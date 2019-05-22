@@ -1,5 +1,6 @@
 package org.paumard.executors;
 
+import java.text.MessageFormat;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -10,16 +11,24 @@ public class PlayingWithCallablesAndFutures {
 
 	public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-		Callable<String> task = () -> {
-			throw new IllegalStateException("I throw an exception in thread " + Thread.currentThread().getName());
+		Callable<String> taskString = () -> {
+			return "I throw an exception in thread " + Thread.currentThread().getName();
+//			throw new IllegalStateException("I throw an exception in thread " + Thread.currentThread().getName());
 		};
+		Callable<Integer> taskInt = () -> {
+			return 1;
+//			throw new IllegalStateException("I throw an exception in thread " + Thread.currentThread().getName());
+		};
+
 
 		ExecutorService executor = Executors.newFixedThreadPool(4);
 
 		try {
 			for (int i = 0; i < 10; i++) {
-				Future<String> future = executor.submit(task);
-				System.out.println("I get: " + future.get());
+				Future<String> future = executor.submit(taskString);
+//				Future<Integer> future = executor.submit(taskInt);
+				Object string = future.get();
+				System.out.println(MessageFormat.format("I get: {0} Object type {1}", string, string instanceof String) );
 			}
 		} finally {
 			executor.shutdown();

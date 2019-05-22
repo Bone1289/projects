@@ -178,8 +178,8 @@ public class JMHSample_12_Forking {
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
                 .include(JMHSample_12_Forking.class.getSimpleName())
-                .warmupIterations(5)
-                .measurementIterations(5)
+                .warmupIterations(2)
+                .measurementIterations(2)
                 .build();
 
         new Runner(opt).run();
