@@ -18,6 +18,7 @@ public class ProcucerConsumerWithLocks {
 	public static void main(String[] args) throws InterruptedException {
 
 		List<Integer> buffer = new ArrayList<>();
+		final int NUMBER_OF_THREADS = 8;
 
 		Lock lock = new ReentrantLock();
 		Condition isEmpty = lock.newCondition();
@@ -71,33 +72,32 @@ public class ProcucerConsumerWithLocks {
 		}
 
 		List<Producer> producers = new ArrayList<>();
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < NUMBER_OF_THREADS / 2; i++) {
 			producers.add(new Producer());
 		}
 
 		List<Consumer> consumers = new ArrayList<>();
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < NUMBER_OF_THREADS / 2; i++) {
 			consumers.add(new Consumer());
 		}
-		
+
 		System.out.println("Producers and Consumers launched");
-		
+
 		List<Callable<String>> producersAndConsumers = new ArrayList<>();
 		producersAndConsumers.addAll(producers);
 		producersAndConsumers.addAll(consumers);
 
-		ExecutorService executorService = Executors.newFixedThreadPool(8);
+		ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 		try {
 			List<Future<String>> futures = executorService.invokeAll(producersAndConsumers);
 
-			futures.forEach(
-					future -> {
-						try {
-							System.out.println(future.get());
-						} catch (InterruptedException | ExecutionException e) {
-							System.out.println("Exception: " + e.getMessage());
-						}
-					});
+			futures.forEach(future -> {
+				try {
+					System.out.println(future.get());
+				} catch (InterruptedException | ExecutionException e) {
+					System.out.println("Exception: " + e.getMessage());
+				}
+			});
 
 		} finally {
 			executorService.shutdown();
