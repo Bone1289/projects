@@ -54,7 +54,7 @@ public class ProcucerConsumerWithLocks {
 				while (count++ < 50) {
 					try {
 						lock.lock();
-						int i = 10/0;
+//						int i = 10/0;
 						while (isFull(buffer)) {
 							// wait
 							isFull.await();
