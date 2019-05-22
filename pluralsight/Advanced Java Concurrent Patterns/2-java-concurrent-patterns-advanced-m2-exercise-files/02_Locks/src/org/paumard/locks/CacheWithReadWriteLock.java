@@ -25,13 +25,22 @@ public class CacheWithReadWriteLock {
 			writeLock.unlock();
 		}
 	}
-	
+
 	public String get(Long key) {
 		readLock.lock();
 		try {
 			return cache.get(key);
 		} finally {
 			readLock.unlock();
+		}
+	}
+
+	public int getSize() {
+		writeLock.lock();
+		try {
+			return cache.size();
+		} finally {
+			writeLock.lock();
 		}
 	}
 
@@ -44,21 +53,23 @@ public class CacheWithReadWriteLock {
 			private Random rand = new Random();
 
 			public String call() throws Exception {
-				while (true) {
+				while (cache.getSize() < 1000) {
 					long key = rand.nextInt(1_000);
 					cache.put(key, Long.toString(key));
+					System.out.println("Added value" + key);
 					if (cache.get(key) == null) {
 						System.out.println("Key " + key + " has not been put in the map");
 					}
 				}
+				return null;
 			}
 		}
 
 		ExecutorService executorService = Executors.newFixedThreadPool(4);
 
 		System.out.println("Adding value...");
-		
-		try  {
+
+		try {
 			for (int i = 0; i < 4; i++) {
 				executorService.submit(new Producer());
 			}
