@@ -1,4 +1,4 @@
-package org.paumard.locks;
+package org.paumard.locks.semaphore;
 
 //Java program to demonstrate 
 //methods of Semaphore class 
