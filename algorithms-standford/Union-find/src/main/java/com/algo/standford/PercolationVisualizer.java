@@ -1,3 +1,4 @@
+package com.algo.standford;
 /******************************************************************************
  *  Compilation:  javac PercolationVisualizer.java
  *  Execution:    java PercolationVisualizer input.txt
@@ -16,10 +17,10 @@
  *
  ******************************************************************************/
 
+import java.awt.Font;
+
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
-
-import java.awt.Font;
 
 public class PercolationVisualizer {
 

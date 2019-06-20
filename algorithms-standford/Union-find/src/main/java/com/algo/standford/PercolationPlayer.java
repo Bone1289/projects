@@ -1,14 +1,17 @@
-import edu.princeton.cs.algs4.StdDraw;
-import edu.princeton.cs.algs4.StdOut;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+package com.algo.standford;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.StdOut;
 
 /**
  * @author bone1289
@@ -18,7 +21,7 @@ public class PercolationPlayer {
     private static final int DELAY = 0;
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(new File(args[0])));
+        BufferedReader br = new BufferedReader(new FileReader("resources/"+new File(args[0])));
         int N = Integer.parseInt(br.readLine());
         StdOut.println(N);
 

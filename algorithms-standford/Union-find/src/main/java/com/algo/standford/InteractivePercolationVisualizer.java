@@ -1,3 +1,4 @@
+package com.algo.standford;
 /******************************************************************************
  *  Compilation:  javac InteractivePercolationVisualizer.java
  *  Execution:    java InteractivePercolationVisualizer n
