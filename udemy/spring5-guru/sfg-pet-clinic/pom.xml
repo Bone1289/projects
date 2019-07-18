@@ -30,7 +30,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugin</groupId>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <goals>install</goals>
@@ -40,7 +40,9 @@
         </plugins>
     </build>
     <scm>
-        <developerConnection>scm:git@github.com:Bone1289/projects.git</developerConnection>
+        <developerConnection>scm:git:https://github.com/Bone1289/projects.git</developerConnection>
+        <url>https://github.com/Bone1289/projects.git</url>
+        <connection>scm:git:https://github.com/Bone1289/projects.git</connection>
         <tag>HEAD</tag>
     </scm>
 
