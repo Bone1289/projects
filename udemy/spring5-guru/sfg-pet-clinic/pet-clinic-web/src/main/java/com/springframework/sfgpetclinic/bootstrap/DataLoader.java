@@ -23,7 +23,7 @@ public class DataLoader implements CommandLineRunner {
             Owner owner = new Owner();
             owner.setId(1L);
             owner.setFirstName("Rata");
-            owner.setFirstName("Bogdan");
+            owner.setLastName("Bogdan");
             ownerService.save(owner);
         }
 
@@ -31,7 +31,7 @@ public class DataLoader implements CommandLineRunner {
             Owner owner = new Owner();
             owner.setId(2L);
             owner.setFirstName("Rata");
-            owner.setFirstName("Andrei");
+            owner.setLastName("Andrei");
             ownerService.save(owner);
         }
         System.out.println("Loaded Owners...");
