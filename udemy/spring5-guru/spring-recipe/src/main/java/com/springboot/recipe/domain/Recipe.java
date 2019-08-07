@@ -1,6 +1,7 @@
 package com.springboot.recipe.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -19,18 +20,22 @@ public class Recipe {
     private String description;
     private Integer prepTime;
     private Integer cookTime;
+    private Integer servings;
     private String source;
     private String url;
 
     @Lob
     private String directions;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    @EqualsAndHashCode.Exclude
     private Set<Ingredient> ingredients = new HashSet<>();
 
     @Lob
     private Byte[] image;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
     private Notes notes;
 
     @Enumerated(value = EnumType.STRING)
