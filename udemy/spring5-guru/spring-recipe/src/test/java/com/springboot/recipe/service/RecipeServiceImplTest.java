@@ -1,5 +1,7 @@
 package com.springboot.recipe.service;
 
+import com.springboot.recipe.converers.RecipeCommandToRecipe;
+import com.springboot.recipe.converers.RecipeToRecipeCommand;
 import com.springboot.recipe.domain.Recipe;
 import com.springboot.recipe.repositories.RecipeRepository;
 import org.junit.Assert;
@@ -23,11 +25,16 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
