@@ -9,5 +9,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CategoryCommand {
     private Long id;
-    private String descriptsion;
+    private String description;
 }
