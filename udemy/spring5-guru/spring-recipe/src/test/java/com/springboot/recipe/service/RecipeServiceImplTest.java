@@ -1,5 +1,6 @@
 package com.springboot.recipe.service;
 
+import com.springboot.recipe.commands.RecipeCommand;
 import com.springboot.recipe.converers.RecipeCommandToRecipe;
 import com.springboot.recipe.converers.RecipeToRecipeCommand;
 import com.springboot.recipe.domain.Recipe;
@@ -65,5 +66,25 @@ public class RecipeServiceImplTest {
         Assert.assertEquals(recipes.size(), 1);
 
         verify(recipeRepository, times(1)).findAll();
+    }
+
+    @Test
+    public void getRecipeCommandByTest() {
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+        Optional<Recipe> recipeOptional = Optional.of(recipe);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        RecipeCommand recipeCommand = new RecipeCommand();
+        recipeCommand.setId(1L);
+
+        when(recipeToRecipeCommand.convert(any())).thenReturn(recipeCommand);
+
+        RecipeCommand recipeCommandById = recipeService.findCommandById(1L);
+
+        assertNotNull("Null recipe returned", recipeCommandById);
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
     }
 }

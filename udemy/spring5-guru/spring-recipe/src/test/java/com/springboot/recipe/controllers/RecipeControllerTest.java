@@ -79,4 +79,18 @@ public class RecipeControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/recipe/2/show"));
     }
+
+    @Test
+    public void testGetUpdateView() throws Exception {
+        RecipeCommand recipeCommand = new RecipeCommand();
+
+        recipeCommand.setId(2L);
+
+        when(recipeService.findCommandById(anyLong())).thenReturn(recipeCommand);
+
+        mockMvc.perform(get("/recipe/1/update"))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("recipe"));
+
+    }
 }
