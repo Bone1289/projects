@@ -8,4 +8,6 @@ public interface IngredientService {
 
     IngredientCommand findByIngredientId(Long ingredientId) throws Exception;
 
+    IngredientCommand saveIngredientCommand(IngredientCommand command);
+
 }
