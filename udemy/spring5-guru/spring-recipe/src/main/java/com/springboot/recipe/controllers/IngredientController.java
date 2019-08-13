@@ -37,4 +37,11 @@ public class IngredientController {
         model.addAttribute("ingredient", ingredientService.findByRecipeIdAndIngredientId(Long.valueOf(recipeId), Long.valueOf(id)));
         return "recipe/ingredient/show";
     }
+
+    @GetMapping
+    @RequestMapping("/ingredient/{id}/show")
+    public String showRecipeIngredient(@PathVariable String id, Model model) throws Exception {
+        model.addAttribute("ingredient", ingredientService.findByIngredientId(Long.valueOf(id)));
+        return "recipe/ingredient/show";
+    }
 }

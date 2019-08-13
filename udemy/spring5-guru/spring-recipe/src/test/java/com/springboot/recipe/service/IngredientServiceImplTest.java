@@ -5,6 +5,7 @@ import com.springboot.recipe.converers.IngredientToIngredientCommand;
 import com.springboot.recipe.converers.UnitOfMeasureToUnitOfMeasureCommand;
 import com.springboot.recipe.domain.Ingredient;
 import com.springboot.recipe.domain.Recipe;
+import com.springboot.recipe.repositories.IngredientRepository;
 import com.springboot.recipe.repositories.RecipeRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,6 +26,9 @@ public class IngredientServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    IngredientRepository ingredientRepository;
+
     @Autowired
     IngredientService ingredientService;
 
@@ -35,7 +39,7 @@ public class IngredientServiceImplTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, recipeRepository);
+        ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, recipeRepository, ingredientRepository);
     }
 
     @Test
@@ -57,5 +61,21 @@ public class IngredientServiceImplTest {
         assertEquals(Long.valueOf(3L), ingredientCommand.getId());
         assertEquals(Long.valueOf(1L), ingredientCommand.getRecipeId());
         verify(recipeRepository, times(1)).findById(anyLong());
+    }
+
+    @Test
+    public void findByIngredientId() throws Exception {
+        Ingredient ingredient = new Ingredient(1L);
+        Optional<Ingredient> ingredientOptional = Optional.of(ingredient);
+
+        when(ingredientRepository.findById(anyLong())).thenReturn(ingredientOptional);
+
+        //then
+        IngredientCommand ingredientCommand = ingredientService.findByIngredientId(1L);
+
+        //when
+        assertEquals(Long.valueOf(1L), ingredientCommand.getId());
+        verify(recipeRepository, never()).findById(anyLong());
+        verify(ingredientRepository, times(1)).findById(anyLong());
     }
 }

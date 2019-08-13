@@ -6,4 +6,6 @@ public interface IngredientService {
 
     IngredientCommand findByRecipeIdAndIngredientId(Long recipeId, Long ingredientId);
 
+    IngredientCommand findByIngredientId(Long ingredientId) throws Exception;
+
 }

@@ -66,4 +66,19 @@ public class IngredientControllerTest {
                 .andExpect(view().name("recipe/ingredient/show"))
                 .andExpect(model().attributeExists("ingredient"));
     }
+
+    @Test
+    public void testShowIngredientDirectly() throws Exception {
+        //given
+        IngredientCommand ingredientCommand = new IngredientCommand();
+
+        //when
+        when(ingredientService.findByIngredientId(anyLong())).thenReturn(ingredientCommand);
+
+        //then
+        mockMvc.perform(get("/ingredient/1/show"))
+               .andExpect(status().isOk())
+               .andExpect(view().name("recipe/ingredient/show"))
+               .andExpect(model().attributeExists("ingredient"));
+    }
 }
