@@ -55,7 +55,7 @@ public class IngredientController {
 
     @PostMapping
     @RequestMapping("recipe/{recipeId}/ingredient")
-    public String saveOfUpdate(@ModelAttribute IngredientCommand ingredientCommand) {
+    public String saveOfUpdate(@ModelAttribute IngredientCommand ingredientCommand) throws Exception {
         IngredientCommand saveIngredientCommand = ingredientService.saveIngredientCommand(ingredientCommand);
         return "redirect:/recipe/" + saveIngredientCommand.getRecipeId() + "/ingredient/" + saveIngredientCommand.getId() + "/show";
     }

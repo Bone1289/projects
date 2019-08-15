@@ -1,6 +1,7 @@
 package com.springboot.recipe.service;
 
 import com.springboot.recipe.commands.IngredientCommand;
+import com.springboot.recipe.commands.UnitOfMeasureCommand;
 import com.springboot.recipe.converers.IngredientCommandToIngredient;
 import com.springboot.recipe.converers.IngredientToIngredientCommand;
 import com.springboot.recipe.converers.UnitOfMeasureCommandToUnitOfMeasure;
@@ -16,6 +17,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
@@ -24,6 +26,8 @@ import static org.mockito.Mockito.*;
 
 public class IngredientServiceImplTest {
 
+    public static final String TEST_INGREDIENT_DESCRIPTION = "Test Ingredient";
+    public static final BigDecimal INGREDIENT_AMOUNT = new BigDecimal(2);
     IngredientToIngredientCommand ingredientToIngredientCommand;
 
     IngredientCommandToIngredient ingredientCommandToIngredient;
@@ -90,15 +94,20 @@ public class IngredientServiceImplTest {
     @Test
     public void testSaveRecipeCommand() throws Exception {
         //given
+        UnitOfMeasureCommand unitOfMeasureCommand = new UnitOfMeasureCommand();
+        unitOfMeasureCommand.setDescription("Each");
+        unitOfMeasureCommand.setId(1L);
+
         IngredientCommand command = new IngredientCommand();
-        command.setId(3L);
+        command.setDescription(TEST_INGREDIENT_DESCRIPTION);
+        command.setAmount(INGREDIENT_AMOUNT);
+        command.setUnitOfMeasure(unitOfMeasureCommand);
         command.setRecipeId(2L);
 
         Optional<Recipe> recipeOptional = Optional.of(new Recipe());
 
         Recipe savedRecipe = new Recipe();
-        savedRecipe.addIngredient(new Ingredient());
-        savedRecipe.getIngredients().iterator().next().setId(3L);
+        savedRecipe.addIngredient(ingredientCommandToIngredient.convert(command));
 
         when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
         when(recipeRepository.save(any())).thenReturn(savedRecipe);
@@ -107,7 +116,8 @@ public class IngredientServiceImplTest {
         IngredientCommand savedCommand = ingredientService.saveIngredientCommand(command);
 
         //then
-        assertEquals(Long.valueOf(3L), savedCommand.getId());
+        assertEquals(TEST_INGREDIENT_DESCRIPTION, savedCommand.getDescription());
+        assertEquals(unitOfMeasureCommand.getDescription(), savedCommand.getUnitOfMeasure().getDescription());
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, times(1)).save(any(Recipe.class));
 
