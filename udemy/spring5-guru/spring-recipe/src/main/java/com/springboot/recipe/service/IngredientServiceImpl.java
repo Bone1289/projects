@@ -123,25 +123,34 @@ public class IngredientServiceImpl implements IngredientService {
             log.info("No command info sent.");
             return null;
         }
-        Long savedIngredientId = -1L;
         if (command.getId() != null) {
             Optional<Ingredient> ingredientOptional = ingredientRepository.findById(command.getId());
             if (ingredientOptional.isPresent()) {
-                Ingredient ingredient = ingredientOptional.get();
-                ingredient.setDescription(command.getDescription());
-                ingredient.setAmount(command.getAmount());
-                ingredient.setUnitOfMeasure(
-                        unitOfMeasureRepository.findById(command.getUnitOfMeasure()
-                                                                 .getId())
-                                .orElseThrow(() -> new RuntimeException("UOM NOT FOUND"))
-                );
+                return updateIngredient(command, ingredientOptional.get());
             } else {
                 return saveIngredient(command);
             }
         } else {
             return saveIngredient(command);
         }
-        return null;
+    }
+
+    private IngredientCommand updateIngredient(IngredientCommand command, Ingredient ingredient) throws Exception {
+        ingredient.setDescription(command.getDescription());
+        ingredient.setAmount(command.getAmount());
+        ingredient.setUnitOfMeasure(
+                unitOfMeasureRepository.findById(command.getUnitOfMeasure()
+                                                         .getId())
+                        .orElseThrow(() -> new RuntimeException("UOM NOT FOUND"))
+        );
+        Optional<Recipe> recipeOptional = recipeRepository.findById(command.getRecipeId());
+        if (!recipeOptional.isPresent()) {
+            throw new Exception("Recipe not found");
+        }
+        Recipe recipe = recipeOptional.get();
+        recipe.addIngredient(ingredient);
+
+        return findByIngredientId(command.getId());
     }
 
     private IngredientCommand saveIngredient(IngredientCommand command) throws Exception {
