@@ -135,6 +135,37 @@ public class IngredientServiceImpl implements IngredientService {
         }
     }
 
+    @Override
+    @Transactional
+    public void deleteById(Long recipeId, Long idToDelete) {
+        log.debug("Deleting ingredient:" + recipeId + ":" + idToDelete);
+
+        Optional<Recipe> recipeOptional = recipeRepository.findById(recipeId);
+
+        if (recipeOptional.isPresent()) {
+            Recipe recipe = recipeOptional.get();
+
+            log.debug("found recipe");
+
+            Optional<Ingredient> ingredientOptional = recipe.getIngredients()
+                    .stream()
+                    .filter(ingredient -> ingredient.getId()
+                            .equals(idToDelete))
+                    .findFirst();
+
+            if (ingredientOptional.isPresent()) {
+                log.debug("Ingredient Found");
+
+                Ingredient ingredientToDelete = ingredientOptional.get();
+                ingredientToDelete.setRecipe(null);
+                recipe.getIngredients()
+                        .remove(ingredientOptional.get());
+                ingredientRepository.delete(ingredientToDelete);
+                recipeRepository.save(recipe);
+            }
+        }
+    }
+
     private IngredientCommand updateIngredient(IngredientCommand command, Ingredient ingredient) throws Exception {
         ingredient.setDescription(command.getDescription());
         ingredient.setAmount(command.getAmount());
