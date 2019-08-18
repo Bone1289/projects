@@ -1,7 +1,11 @@
 package com.springboot.recipe.controllers;
 
+import com.springboot.recipe.commands.RecipeCommand;
 import com.springboot.recipe.service.ImageService;
 import com.springboot.recipe.service.RecipeService;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 @Controller
 public class ImageController {
@@ -29,8 +38,23 @@ public class ImageController {
     }
 
     @PostMapping("recipe/{id}/image")
-    public String handleImagePost(@PathVariable String id, @RequestParam("imagefile") MultipartFile file) {
+    public String handleImagePost(@PathVariable String id, @RequestParam("imagefile") MultipartFile file) throws IOException {
         imageService.saveImageFile(Long.valueOf(id), file);
         return "redirect:/recipe/" + id + "/show";
+    }
+
+    @GetMapping("recipe/{id}/recipeimage")
+    public void reanderImageFromDB(@PathVariable String id, HttpServletResponse response) throws IOException {
+        RecipeCommand recipeCommand = recipeService.findCommandById(Long.valueOf(id));
+
+        if (recipeCommand.getImage() != null) {
+            response.setContentType("image/jpeg");
+
+            InputStream is = new ByteArrayInputStream(ArrayUtils.toPrimitive(recipeCommand.getImage()));
+            IOUtils.copy(is, response.getOutputStream());
+        } else {
+            ClassPathResource imgFile = new ClassPathResource("static/images/No-image-available.jpg");
+            IOUtils.copy(imgFile.getInputStream(), response.getOutputStream());
+        }
     }
 }

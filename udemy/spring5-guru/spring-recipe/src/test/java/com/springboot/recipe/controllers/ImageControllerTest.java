@@ -3,14 +3,17 @@ package com.springboot.recipe.controllers;
 import com.springboot.recipe.commands.RecipeCommand;
 import com.springboot.recipe.service.ImageService;
 import com.springboot.recipe.service.RecipeService;
+import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -65,4 +68,27 @@ public class ImageControllerTest {
                 .andExpect(header().string("Location", "/recipe/1/show"));
         verify(imageService, times(1)).saveImageFile(anyLong(), any());
     }
+
+    @Test
+    public void renderImageFromDB() throws Exception {
+        RecipeCommand command = new RecipeCommand();
+        command.setId(1L);
+        String testString = "String Boot";
+
+        command.setImage(ArrayUtils.toObject(testString.getBytes()));
+
+        when(recipeService.findCommandById(anyLong())).thenReturn(command);
+
+        MockHttpServletResponse response = mockMvc
+                .perform(get("/recipe/1/recipeimage"))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+
+        byte[] responseByte = response.getContentAsByteArray();
+
+        assertEquals(testString.getBytes().length, responseByte.length);
+    }
+
+
 }
