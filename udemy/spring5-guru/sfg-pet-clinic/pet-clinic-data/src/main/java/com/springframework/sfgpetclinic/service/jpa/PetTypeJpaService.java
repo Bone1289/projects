@@ -6,6 +6,7 @@ import com.springframework.sfgpetclinic.service.PetTypeService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Service
@@ -20,28 +21,30 @@ public class PetTypeJpaService implements PetTypeService {
 
     @Override
     public Set<PetType> findAll() {
-
-
-        return null;
+        Set<PetType> petTypes = new HashSet<>();
+        petTypeRepository.findAll()
+                         .forEach(petTypes::add);
+        return petTypes;
     }
 
     @Override
-    public PetType findById(Long aLong) {
-        return null;
+    public PetType findById(Long petTypeId) {
+        return petTypeRepository.findById(petTypeId)
+                                .orElse(null);
     }
 
     @Override
-    public PetType save(PetType object) {
-        return null;
+    public PetType save(PetType petType) {
+        return petTypeRepository.save(petType);
     }
 
     @Override
-    public void delete(PetType object) {
-
+    public void delete(PetType petType) {
+        petTypeRepository.delete(petType);
     }
 
     @Override
-    public void deleteById(Long aLong) {
-
+    public void deleteById(Long petTypeId) {
+        petTypeRepository.deleteById(petTypeId);
     }
 }
