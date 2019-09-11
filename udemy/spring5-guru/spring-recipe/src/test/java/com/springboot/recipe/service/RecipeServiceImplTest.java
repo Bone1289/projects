@@ -4,6 +4,7 @@ import com.springboot.recipe.commands.RecipeCommand;
 import com.springboot.recipe.converers.RecipeCommandToRecipe;
 import com.springboot.recipe.converers.RecipeToRecipeCommand;
 import com.springboot.recipe.domain.Recipe;
+import com.springboot.recipe.exception.NotFoundException;
 import com.springboot.recipe.repositories.RecipeRepository;
 import org.junit.Assert;
 import org.junit.Before;
@@ -100,5 +101,16 @@ public class RecipeServiceImplTest {
 
         //then
         verify(recipeRepository, times(1)).deleteById(anyLong());
+    }
+
+    @Test(expected = NotFoundException.class)
+    public void getRecipeByIdTestNotFound() {
+
+        Optional<Recipe> recipeOptional = Optional.empty();
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        Recipe recipeReturned = recipeService.findById(1L);
+
+        //should go boom
     }
 }

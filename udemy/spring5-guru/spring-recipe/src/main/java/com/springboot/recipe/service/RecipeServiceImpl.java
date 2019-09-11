@@ -4,6 +4,7 @@ import com.springboot.recipe.commands.RecipeCommand;
 import com.springboot.recipe.converers.RecipeCommandToRecipe;
 import com.springboot.recipe.converers.RecipeToRecipeCommand;
 import com.springboot.recipe.domain.Recipe;
+import com.springboot.recipe.exception.NotFoundException;
 import com.springboot.recipe.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ public class RecipeServiceImpl implements RecipeService {
     public Recipe findById(Long id) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);
         return recipeOptional.orElseThrow(
-                () -> new RuntimeException("Recipe Not Found")
+                () -> new NotFoundException("Recipe Not Found. For ID value: " + id.toString())
         );
     }
 

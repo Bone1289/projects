@@ -2,6 +2,7 @@ package com.springboot.recipe.controllers;
 
 import com.springboot.recipe.commands.RecipeCommand;
 import com.springboot.recipe.domain.Recipe;
+import com.springboot.recipe.exception.NotFoundException;
 import com.springboot.recipe.service.RecipeService;
 import org.junit.Before;
 import org.junit.Test;
@@ -97,9 +98,18 @@ public class RecipeControllerTest {
     @Test
     public void testDeleteAction() throws Exception {
         mockMvc.perform(get("/recipe/1/delete"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/"));
+               .andExpect(status().is3xxRedirection())
+               .andExpect(view().name("redirect:/"));
         verify(recipeService, times(1)).deleteById(anyLong());
 
+    }
+
+    @Test
+    public void testGetRecipeNotFound() throws Exception {
+        when(recipeService.findById(anyLong())).thenThrow(NotFoundException.class);
+
+        mockMvc.perform(get("/recipe/1/show"))
+               .andExpect(status().isNotFound())
+               .andExpect(view().name("404error"));
     }
 }
