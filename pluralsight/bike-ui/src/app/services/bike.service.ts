@@ -10,12 +10,22 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class BikeService {
+  private static endpoint = '/server/api/v1/bikes';
 
   constructor(private http:HttpClient) {
 
   }
 
-  getBikes(){
-    return this.http.get('/server/api/v1/bikes');
+  getBikes() {
+    return this.http.get(BikeService.endpoint);
+  }
+
+  getBike(id: number) {
+    return this.http.get(BikeService.endpoint + '/' + id);
+  }
+
+  createBikeRegistration(bike) {
+    let body = JSON.stringify(bike);
+    return this.http.post(BikeService.endpoint, body, httpOptions);
   }
 }
