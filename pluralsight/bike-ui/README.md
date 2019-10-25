@@ -42,3 +42,5 @@ yarn install --check-files
 yarn add express-http-proxy
 yarn add cors
 yarn add port
+
+node server.js
