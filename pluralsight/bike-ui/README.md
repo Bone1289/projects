@@ -30,3 +30,15 @@ https://medium.com/@beeman/using-yarn-with-angular-cli-v6-7f53a7678b93
 
 ng config -g cli.packageManager yarn
 ng config -g cli.packageManager npm
+
+npm start
+
+ng g component components/...
+ng g service service/bike.
+
+yarn add bootstrap@4.3.1
+npm install @angular-devkit/core --save
+yarn install --check-files
+yarn add express-http-proxy
+yarn add cors
+yarn add port
