@@ -1,6 +1,7 @@
 package com.spring.angular.bikeshop.controllers;
 
 import com.spring.angular.bikeshop.model.Bike;
+import com.spring.angular.bikeshop.repositories.BikeRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,20 +12,25 @@ import java.util.List;
 @RequestMapping("/api/v1/bikes")
 public class BikeController {
 
+    private final BikeRepository bikeRepository;
+
+    public BikeController(BikeRepository bikeRepository) {
+        this.bikeRepository = bikeRepository;
+    }
+
     @GetMapping
     public List<Bike> list() {
-        List<Bike> bikes = new ArrayList<>();
-        return bikes;
+        return bikeRepository.findAll();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void create(@RequestBody Bike bike) {
-
+        bikeRepository.save(bike);
     }
 
     @GetMapping("/{id}")
     public Bike get(@PathVariable("id") long id) {
-        return new Bike();
+        return bikeRepository.getOne(id);
     }
 }
