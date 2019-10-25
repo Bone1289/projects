@@ -1,5 +1,6 @@
 import { BikeService } from './../../services/bike.service';
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-admin',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class AdminComponent implements OnInit {
   public bikes;
 
-  constructor(private bikeService: BikeService) { }
+  constructor(private bikeService: BikeService, public auth: AuthService) { }
 
   ngOnInit() {
     this.getBikes();
@@ -20,7 +21,7 @@ export class AdminComponent implements OnInit {
       data => {this.bikes = data},
       err => console.error(err),
       () => console.log('bikes loaded')
-    )
+    );
   }
 
 }

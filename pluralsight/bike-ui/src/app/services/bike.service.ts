@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {AuthService} from "./auth.service";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -12,20 +13,30 @@ const httpOptions = {
 export class BikeService {
   private static endpoint = '/server/api/v1/bikes';
 
-  constructor(private http:HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthService) {
 
   }
 
   getBikes() {
-    return this.http.get(BikeService.endpoint);
+    // const token = localStorage.getItem('access_token');
+    // const token = this.auth.getTokenSilently$();
+    // console.log(token);
+    return this.http.get(BikeService.endpoint, /*{
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + token)
+    }*/);
   }
 
   getBike(id: number) {
-    return this.http.get(BikeService.endpoint + '/' + id);
+    // const token = localStorage.getItem('access_token');
+    // const token = this.auth.getTokenSilently$();
+    return this.http.get(BikeService.endpoint + '/' + id,
+      /*{
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + token)
+      }*/);
   }
 
   createBikeRegistration(bike) {
-    let body = JSON.stringify(bike);
+    const body = JSON.stringify(bike);
     return this.http.post(BikeService.endpoint, body, httpOptions);
   }
 }
