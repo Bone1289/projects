@@ -8,11 +8,11 @@ public class DoublyLinkedList<T> implements Iterable<T> {
     private Node<T> head = null;
     private Node<T> tail = null;
 
-    private class Node<T> {
-        private T data;
-        private Node<T> next, prev;
+    public static class Node<K> {
+        private K data;
+        private Node<K> next, prev;
 
-        public Node(T data, Node<T> prev, Node<T> next) {
+        public Node(K data, Node<K> prev, Node<K> next) {
             this.data = data;
             this.prev = prev;
             this.next = next;
