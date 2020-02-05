@@ -1,3 +1,5 @@
+package interview;
+
 import interview.Fibonacci;
 import org.junit.Test;
 

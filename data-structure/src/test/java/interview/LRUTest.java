@@ -1,3 +1,5 @@
+package interview;
+
 import interview.LRUCache_algo;
 import org.junit.Assert;
 import org.junit.Before;
@@ -46,7 +48,7 @@ public class LRUTest {
         testLruSize(4);
     }
 
-    public void testLruSize(int lruSize) {
+    private void testLruSize(int lruSize) {
         LRUCache_algo.LRUCache lru = new LRUCache_algo.LRUCache(lruSize);
         Assert.assertFalse(lru.getValueFromKey("a").isFound());
         lru.insertKeyValuePair("a", 99);
