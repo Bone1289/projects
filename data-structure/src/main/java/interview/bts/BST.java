@@ -1,13 +1,22 @@
 package interview.bts;
 
+import interview.bts.closevalue.CloseValueStrategy;
+
 public class BST {
 
     public int value;
     public BST left;
     public BST right;
+    private CloseValueStrategy closeValueStrategy;
+
 
     public BST(int value) {
         this.value = value;
+    }
+
+    public BST(int value, CloseValueStrategy closeValueStrategy) {
+        this.value = value;
+        this.closeValueStrategy = closeValueStrategy;
     }
 
     public BST insert(int value) {
@@ -91,4 +100,7 @@ public class BST {
         return left == null ? value : left.getMinValue();
     }
 
+    public int findClosestValueInBst(int target) {
+        return closeValueStrategy.findClosestValueInBst(this, target);
+    }
 }
