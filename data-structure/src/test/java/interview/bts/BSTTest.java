@@ -1,5 +1,6 @@
-package interview;
+package interview.bts;
 
+import interview.bts.BST;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -8,20 +9,20 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class BST2Test {
-    private static BSTV2 test1;
-    private static BSTV2 test2;
-    private static BSTV2 test3;
-    private static BSTV2 test4;
+public class BSTTest {
+    private static BST test1;
+    private static BST test2;
+    private static BST test3;
+    private static BST test4;
 
     static {
-        test1 = new BSTV2(10);
+        test1 = new BST(10);
         test1.insert(5).insert(15).insert(5).insert(2).insert(14).insert(22);
-        test2 = new BSTV2(10);
+        test2 = new BST(10);
         test2.insert(15).insert(11).insert(22).remove(10);
-        test3 = new BSTV2(10);
+        test3 = new BST(10);
         test3.insert(5).insert(7).insert(2).remove(10);
-        test4 = new BSTV2(10);
+        test4 = new BST(10);
         test4
                 .insert(5)
                 .insert(15)
@@ -40,7 +41,7 @@ public class BST2Test {
                 .remove(17);
     }
 
-    private void inOrderTraverse(BSTV2 tree, List<Integer> array) {
+    private void inOrderTraverse(BST tree, List<Integer> array) {
         if (tree.left != null) {
             this.inOrderTraverse(tree.left, array);
         }
