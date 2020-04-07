@@ -1,0 +1,24 @@
+docker run -e MYSQL_ROOT_PASSWORD=test -d mysql mysqld --lower_case_table_names=1
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' some-mysql
+docker exec -it some-mysql mysql -uroot -p
+
+
+Open terminal and edit /etc/mysql/my.cnf
+
+sudo nano /etc/mysql/my.cnf
+Underneath the [mysqld] section.add:
+
+lower_case_table_names = 1
+Restart mysql
+
+sudo /etc/init.d/mysql restart
+Then check it here:
+
+mysqladmin -u root -p variables
+
+https://dba.stackexchange.com/questions/59407/how-to-make-mysql-table-name-case-insensitive-in-ubuntu
+docker restart [ContainerID]
+
+
+
+
