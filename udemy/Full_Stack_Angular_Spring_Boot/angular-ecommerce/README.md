@@ -43,3 +43,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 `npm install @fortawesome/fontawesome-free`
 
+`ng add @angular/localize`
+
+`npm install @ng-bootstrap/ng-bootstrap`
+
