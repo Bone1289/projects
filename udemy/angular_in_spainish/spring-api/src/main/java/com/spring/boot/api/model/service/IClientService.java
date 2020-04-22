@@ -6,5 +6,11 @@ import java.util.List;
 
 public interface IClientService {
 
-    public List<Client> findAll();
+    List<Client> findAll();
+
+    Client findById(Long id);
+
+    Client save(Client client);
+
+    void delete(Long id);
 }
