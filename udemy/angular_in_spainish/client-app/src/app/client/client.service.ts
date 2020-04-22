@@ -20,6 +20,10 @@ export class ClientService {
     return this.http.get<Client[]>(this.urlClientEndpoint)
   }
 
+  getClient(id): Observable<Client> {
+    return this.http.get<Client>(`${this.urlClientEndpoint}/${id}`);
+  }
+
   create(client: Client): Observable<Client> {
     return this.http.post<Client>(this.urlClientEndpoint, client, {headers: this.httpHeaders});
   }

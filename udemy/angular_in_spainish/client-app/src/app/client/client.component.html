@@ -13,6 +13,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Create Day</th>
+        <th>Edit</th>
       </tr>
       </thead>
       <tbody>
@@ -22,6 +23,10 @@
         <td>{{client.lastName}}</td>
         <td>{{client.id}}</td>
         <td>{{client.createAt}}</td>
+        <td>
+          <button type="button" class="btn btn-primary" name="edit" [routerLink]="['/clients/form', client.id]">Edit
+          </button>
+        </td>
       </tr>
       </tbody>
     </table>
