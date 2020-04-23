@@ -2,10 +2,14 @@ package com.spring.boot.api.controller;
 
 import com.spring.boot.api.model.entity.Client;
 import com.spring.boot.api.model.service.IClientService;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
@@ -24,8 +28,25 @@ public class ClientRestController {
     }
 
     @GetMapping("/clients/{id}")
-    public Client show(@PathVariable Long id) {
-        return clientService.findById(id);
+    public ResponseEntity<?> show(@PathVariable Long id) {
+        Client client = null;
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            client = clientService.findById(id);
+        } catch (DataAccessException e) {
+            response.put("message", "An error occurred during query of database.");
+            if (e.getMessage() != null) {
+                response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            }
+        }
+
+        if (client == null) {
+            response.put("message", "Client ID: ".concat(id.toString().concat(" is not present in database")));
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(client, HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/clients")
