@@ -18,7 +18,7 @@ public class Client implements Serializable {
     @Column
     private String lastName;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(name = "create_at")

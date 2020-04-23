@@ -39,6 +39,7 @@ public class ClientRestController {
             if (e.getMessage() != null) {
                 response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
             }
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         if (client == null) {
@@ -50,9 +51,24 @@ public class ClientRestController {
     }
 
     @PostMapping("/clients")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Client create(@RequestBody Client client) {
-        return clientService.save(client);
+    public ResponseEntity<?> create(@RequestBody Client client) {
+        Client savedClient;
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            savedClient = clientService.save(client);
+        } catch (DataAccessException e) {
+            response.put("message", "An error occurred during insert in database.");
+            if (e.getMessage() != null) {
+                response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            }
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put("client", savedClient);
+        response.put("message", "Client created");
+
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PutMapping("/clients/{id}")
