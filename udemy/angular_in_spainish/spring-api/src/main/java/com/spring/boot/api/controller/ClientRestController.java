@@ -5,12 +5,16 @@ import com.spring.boot.api.model.service.IClientService;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.xml.crypto.Data;
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
@@ -30,7 +34,7 @@ public class ClientRestController {
 
     @GetMapping("/clients/{id}")
     public ResponseEntity<?> show(@PathVariable Long id) {
-        Client client = null;
+        Client client;
         Map<String, Object> response = new HashMap<>();
 
         try {
@@ -52,9 +56,18 @@ public class ClientRestController {
     }
 
     @PostMapping("/clients")
-    public ResponseEntity<?> create(@RequestBody Client client) {
+    public ResponseEntity<?> create(@Valid @RequestBody Client client, BindingResult result) {
         Client savedClient;
         Map<String, Object> response = new HashMap<>();
+
+        if (result.hasErrors()) {
+            List<String> errors = result.getFieldErrors()
+                    .stream()
+                    .map(err -> MessageFormat.format("Field{ 0}", err.getField()))
+                    .collect(Collectors.toList());
+            response.put("errors", errors);
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
 
         try {
             savedClient = clientService.save(client);
@@ -73,7 +86,6 @@ public class ClientRestController {
     }
 
     @PutMapping("/clients/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> update(@RequestBody Client client, @PathVariable Long id) {
 
         Client currentClient;
