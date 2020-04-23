@@ -108,7 +108,7 @@ public class ClientRestController {
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        response.put("message", "Client updated.");
+        response.put("message", "Client updated");
         response.put("client", currentClient);
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -128,7 +128,7 @@ public class ClientRestController {
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        response.put("message", "Client was deleted.");
+        response.put("message", "Client was deleted");
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
