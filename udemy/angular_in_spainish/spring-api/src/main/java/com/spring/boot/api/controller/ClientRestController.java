@@ -48,7 +48,7 @@ public class ClientRestController {
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>(client, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(client, HttpStatus.OK);
     }
 
     @PostMapping("/clients")
@@ -115,7 +115,6 @@ public class ClientRestController {
     }
 
     @DeleteMapping("/clients/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<?> delete(@PathVariable Long id) {
         Map<String, Object> response = new HashMap<>();
 
