@@ -12,6 +12,7 @@ export class FormComponent implements OnInit {
 
   public client: Client = new Client();
   public title: string = "Create client";
+  public errors: string[];
 
   constructor(private clientService: ClientService,
               private router: Router,
@@ -42,21 +43,27 @@ export class FormComponent implements OnInit {
           showConfirmButton: false,
           timer: 2500
         })
+      },
+      err => {
+        this.errors = err.error.errors as string[];
       }
     )
   }
 
   public update(): void {
     this.clientService.update(this.client).subscribe(clientResponse => {
-      this.router.navigate(['/clients']);
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: `${clientResponse.message}: ${clientResponse.client.firstName}`,
-        showConfirmButton: false,
-        timer: 2500
+        this.router.navigate(['/clients']);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${clientResponse.message}: ${clientResponse.client.firstName}`,
+          showConfirmButton: false,
+          timer: 2500
+        })
+      },
+      err => {
+        this.errors = err.error.errors as string[];
       })
-    })
   }
 
 }

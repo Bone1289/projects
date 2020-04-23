@@ -28,6 +28,10 @@ export class ClientService {
   getClient(id): Observable<Client> {
     return this.http.get<Client>(`${this.urlClientEndpoint}/${id}`).pipe(
       catchError(e => {
+        if (e.status == 400) {
+          return throwError(e);
+        }
+
         this.router.navigate(['/clients']);
         console.error(e.error.message);
         Swal.fire("Error on editing", e.error.message, 'error');
@@ -39,6 +43,10 @@ export class ClientService {
   create(client: Client): Observable<ClientResponse> {
     return this.http.post<ClientResponse>(this.urlClientEndpoint, client, {headers: this.httpHeaders}).pipe(
       catchError(e => {
+        if (e.status == 400) {
+          return throwError(e);
+        }
+
         console.error(e.error.message);
         Swal.fire(e.error.message, e.error.error, 'error');
         return throwError(e);
