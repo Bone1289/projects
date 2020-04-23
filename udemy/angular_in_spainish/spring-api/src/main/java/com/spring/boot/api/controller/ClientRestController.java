@@ -63,7 +63,7 @@ public class ClientRestController {
         if (result.hasErrors()) {
             List<String> errors = result.getFieldErrors()
                     .stream()
-                    .map(err -> MessageFormat.format("Field{ 0}", err.getField()))
+                    .map(err -> MessageFormat.format("Field {0} contains following error {1}.", err.getField(), err.getDefaultMessage()))
                     .collect(Collectors.toList());
             response.put("errors", errors);
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
@@ -86,10 +86,19 @@ public class ClientRestController {
     }
 
     @PutMapping("/clients/{id}")
-    public ResponseEntity<?> update(@RequestBody Client client, @PathVariable Long id) {
+    public ResponseEntity<?> update(@Valid @RequestBody Client client, BindingResult result, @PathVariable Long id) {
 
         Client currentClient;
         Map<String, Object> response = new HashMap<>();
+
+        if (result.hasErrors()) {
+            List<String> errors = result.getFieldErrors()
+                    .stream()
+                    .map(err -> MessageFormat.format("Field {0} contains following error {1}.", err.getField(), err.getDefaultMessage()))
+                    .collect(Collectors.toList());
+            response.put("errors", errors);
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
 
         try {
             currentClient = clientService.findById(id);
