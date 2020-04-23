@@ -33,12 +33,12 @@ export class FormComponent implements OnInit {
 
   public create(): void {
     this.clientService.create(this.client).subscribe(
-      client => {
+      clientResponse => {
         this.router.navigate(['/clients']);
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: `Client ${client.firstName} was created`,
+          title: clientResponse.message,
           showConfirmButton: false,
           timer: 2500
         })
@@ -47,12 +47,12 @@ export class FormComponent implements OnInit {
   }
 
   public update(): void {
-    this.clientService.update(this.client).subscribe(client => {
+    this.clientService.update(this.client).subscribe(clientResponse => {
       this.router.navigate(['/clients']);
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: `Client ${client.firstName} was updated`,
+        title: `${clientResponse.message}: ${clientResponse.client.firstName}`,
         showConfirmButton: false,
         timer: 2500
       })

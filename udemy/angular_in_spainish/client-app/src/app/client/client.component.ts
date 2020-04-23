@@ -25,7 +25,7 @@ export class ClientComponent implements OnInit {
   delete(client: Client): void {
     Swal.fire({
       title: 'Are you sure?',
-      text: `Are you sure you want to delete ${client.firstName} ${client.lastName}`,
+      text: `Are you sure you want to delete ${client.firstName} ${client.lastName}?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -34,11 +34,11 @@ export class ClientComponent implements OnInit {
       cancelButtonText: 'No, don\'t delete'
     }).then((result) => {
       if (result.value) {
-        this.clientService.deleteClient(client.id).subscribe(response => {
+        this.clientService.deleteClient(client.id).subscribe(clientResponse => {
           this.clients = this.clients.filter(cli => cli.id !== client.id);
           Swal.fire(
             'Deleted!',
-            `Client ${client.firstName} ${client.lastName} deleted.`,
+            clientResponse.message,
             'success'
           )
         });
