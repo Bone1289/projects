@@ -3,6 +3,8 @@ package com.spring.boot.api.controller;
 import com.spring.boot.api.model.entity.Client;
 import com.spring.boot.api.model.service.IClientService;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -30,6 +32,11 @@ public class ClientRestController {
     @GetMapping("/clients")
     public List<Client> index() {
         return clientService.findAll();
+    }
+
+    @GetMapping("/clients/page/{page}")
+    public Page<Client> index(@PathVariable Integer page) {
+        return clientService.findAll(PageRequest.of(page, 4));
     }
 
     @GetMapping("/clients/{id}")

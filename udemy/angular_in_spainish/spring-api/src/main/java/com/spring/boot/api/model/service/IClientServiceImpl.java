@@ -2,6 +2,8 @@ package com.spring.boot.api.model.service;
 
 import com.spring.boot.api.model.dao.IClientDao;
 import com.spring.boot.api.model.entity.Client;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +22,12 @@ public class IClientServiceImpl implements IClientService {
     @Transactional(readOnly = true)
     public List<Client> findAll() {
         return (List<Client>) clientDao.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Client> findAll(Pageable pageable) {
+        return clientDao.findAll(pageable);
     }
 
     @Override
