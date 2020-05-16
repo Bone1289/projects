@@ -3,7 +3,7 @@ import {CLIENTES} from "./clients.json";
 import {Client} from "./client";
 import {Observable, throwError} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {catchError} from "rxjs/operators";
+import {catchError, map, tap} from "rxjs/operators";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
 import {ClientResponse} from "./client.response";
@@ -21,8 +21,17 @@ export class ClientService {
               private router: Router) {
   }
 
-  getClients(): Observable<Client[]> {
-    return this.http.get<Client[]>(this.urlClientEndpoint)
+  getClients(page): Observable<Client[]> {
+    return this.http.get(this.urlClientEndpoint + "/page/" + page).pipe(
+      map((response: any) => {
+        (response.content as Client[]).map(client => {
+          client.firstName = client.firstName.toUpperCase();
+          return client;
+        });
+        return response.content as Client[];
+      })
+    );
+
   }
 
   getClient(id): Observable<Client> {

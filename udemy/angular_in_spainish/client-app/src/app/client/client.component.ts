@@ -3,6 +3,7 @@ import {Client} from "./client";
 import {CLIENTES} from "./clients.json";
 import {ClientService} from "./client.service";
 import Swal from 'sweetalert2';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-client',
@@ -13,13 +14,22 @@ export class ClientComponent implements OnInit {
 
   clients: Client[];
 
-  constructor(private clientService: ClientService) {
+  constructor(private clientService: ClientService,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.clientService.getClients().subscribe(clients => {
-      this.clients = clients
-    })
+    this.activatedRoute.paramMap.subscribe(params => {
+      let page: number = +params.get("page")
+      if (!page) {
+        page = 0;
+      }
+      this.clientService.getClients(page).subscribe(response => {
+        this.clients = response
+      });
+    });
+
+
   }
 
   delete(client: Client): void {
