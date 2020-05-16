@@ -21,14 +21,14 @@ export class ClientService {
               private router: Router) {
   }
 
-  getClients(page): Observable<Client[]> {
+  getClients(page): Observable<any> {
     return this.http.get(this.urlClientEndpoint + "/page/" + page).pipe(
       map((response: any) => {
         (response.content as Client[]).map(client => {
           client.firstName = client.firstName.toUpperCase();
           return client;
         });
-        return response.content as Client[];
+        return response;
       })
     );
 
