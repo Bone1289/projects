@@ -10,6 +10,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormComponent} from './client/form.component';
 import {FormsModule} from "@angular/forms";
 import {PaginatorComponent} from './paginator/paginator.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
 
 const routes: Routes = [
   {path: '', redirectTo: '/clients', pathMatch: 'full'},
@@ -27,7 +30,10 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatMomentDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
