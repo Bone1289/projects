@@ -10,9 +10,14 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormComponent} from './client/form.component';
 import {FormsModule} from "@angular/forms";
 import {PaginatorComponent} from './paginator/paginator.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import {registerLocaleData} from "@angular/common";
+import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
+import localUs from '@angular/common/locales/en-GB';
+
+registerLocaleData(localUs, 'en')
 
 const routes: Routes = [
   {path: '', redirectTo: '/clients', pathMatch: 'full'},
@@ -35,7 +40,7 @@ const routes: Routes = [
     MatDatepickerModule,
     MatMomentDateModule
   ],
-  providers: [],
+  providers: [{provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
