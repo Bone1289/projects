@@ -1,26 +1,31 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ClientService} from "../client.service";
 import {ActivatedRoute} from "@angular/router";
 import {Client} from "../client";
 import Swal from "sweetalert2";
 import {HttpEventType} from "@angular/common/http";
+import {ModalService} from "./modal.service";
 
 @Component({
-  selector: 'app-details',
+  selector: 'client-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  client: Client;
+  @Input() client: Client;
   title = "Client Details";
   selectedPhoto: File;
   progress: number = 0;
 
   constructor(private clientService: ClientService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              public modalService: ModalService
+  ) {
   }
 
-  ngOnInit(): void {
+  ngOnInit()
+    :
+    void {
     this.progress = 0;
     this.activatedRoute.paramMap.subscribe(params => {
       let id: number = +params.get("id")
@@ -68,6 +73,11 @@ export class DetailsComponent implements OnInit {
           }
         }
       );
+  }
 
+  closeModal() {
+    this.modalService.closeModal();
+    this.selectedPhoto = null;
+    this.progress = 0;
   }
 }
