@@ -126,7 +126,7 @@ public class ClientRestController {
             currentClient.setFirstName(client.getFirstName());
             currentClient.setLastName(client.getLastName());
             currentClient.setEmail(client.getEmail());
-
+            currentClient.setCreateAt(client.getCreateAt());
             clientService.save(currentClient);
         } catch (DataAccessException ex) {
             response.put("message", "An error occurred during update of database.");
