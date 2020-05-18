@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Client} from "./client";
-import {CLIENTES} from "./clients.json";
 import {ClientService} from "./client.service";
 import Swal from 'sweetalert2';
 import {ActivatedRoute} from "@angular/router";

@@ -3,6 +3,7 @@ import {ClientService} from "../client.service";
 import {ActivatedRoute} from "@angular/router";
 import {Client} from "../client";
 import Swal from "sweetalert2";
+import {HttpEventType} from "@angular/common/http";
 
 @Component({
   selector: 'app-details',
@@ -13,12 +14,14 @@ export class DetailsComponent implements OnInit {
   client: Client;
   title = "Client Details";
   selectedPhoto: File;
+  progress: number = 0;
 
   constructor(private clientService: ClientService,
               private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.progress = 0;
     this.activatedRoute.paramMap.subscribe(params => {
       let id: number = +params.get("id")
       if (id) {
@@ -30,6 +33,7 @@ export class DetailsComponent implements OnInit {
   }
 
   selectPhoto(event) {
+    this.progress = 0;
     this.selectedPhoto = event.target.files[0];
     console.log(this.selectedPhoto);
     if (this.selectedPhoto.type.indexOf('image') < 0) {
@@ -47,16 +51,23 @@ export class DetailsComponent implements OnInit {
   uploadPhoto() {
     this.clientService
       .uploadPhoto(this.selectedPhoto, this.client.id)
-      .subscribe(client => {
-        this.client = client;
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: "File uploaded.",
-          showConfirmButton: false,
-          timer: 2500
-        });
-        this.selectedPhoto=null;
-      });
+      .subscribe(
+        event => {
+          if (event.type === HttpEventType.UploadProgress) {
+            this.progress = Math.round((event.loaded / event.total) * 100);
+          } else if (event.type === HttpEventType.Response) {
+            let response: any = event.body;
+            this.client = response.client as Client;
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: "File uploaded.",
+              showConfirmButton: false,
+              timer: 2500
+            });
+          }
+        }
+      );
+
   }
 }

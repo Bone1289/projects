@@ -88,7 +88,7 @@ export class ClientService {
     formData.append("file", fileInfo);
     formData.append("id", id);
 
-    const req = new HttpRequest('POST', `${this.urlClientEndpoint}/upload`, formData, {
+    const req = new HttpRequest('POST', `${this.urlClientEndpoint}/uploads`, formData, {
       reportProgress: true
     });
 
