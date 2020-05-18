@@ -16,6 +16,7 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {registerLocaleData} from "@angular/common";
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
 import localUs from '@angular/common/locales/en-GB';
+import { DetailsComponent } from './client/details/details.component';
 
 registerLocaleData(localUs, 'en')
 
@@ -24,12 +25,13 @@ const routes: Routes = [
   {path: 'clients', component: ClientComponent},
   {path: 'clients/page/:page', component: ClientComponent},
   {path: 'clients/form', component: FormComponent},
-  {path: 'clients/form/:id', component: FormComponent}
+  {path: 'clients/form/:id', component: FormComponent},
+  {path: 'clients/view/:id', component: DetailsComponent}
 ]
 
 @NgModule({
   declarations: [
-    AppComponent, HeaderComponent, FooterComponent, ClientComponent, FormComponent, PaginatorComponent
+    AppComponent, HeaderComponent, FooterComponent, ClientComponent, FormComponent, PaginatorComponent, DetailsComponent
   ],
   imports: [
     BrowserModule,
