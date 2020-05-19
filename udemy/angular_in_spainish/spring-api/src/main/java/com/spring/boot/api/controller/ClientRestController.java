@@ -221,7 +221,12 @@ public class ClientRestController {
         }
 
         if (!resource.exists() && !resource.isReadable()) {
-            throw new RuntimeException("Error during of reading of the image" + fileName);
+            filePath = getDefaultImagePath();
+            try {
+                resource = new UrlResource(filePath.toUri());
+            } catch (MalformedURLException e) {
+                throw new RuntimeException("Error during of creating of URI");
+            }
         }
 
         HttpHeaders headers = new HttpHeaders();
@@ -236,6 +241,11 @@ public class ClientRestController {
             uploadDirectory.mkdir();
         }
         return uploads.resolve(fileName).toAbsolutePath();
+    }
+
+    private Path getDefaultImagePath() {
+        Path uploads = Paths.get("src/main/resources/static/images");
+        return uploads.resolve("no_user.png").toAbsolutePath();
     }
 
     private void deleteClientFile(Client client) {
