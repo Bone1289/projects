@@ -63,6 +63,7 @@ export class DetailsComponent implements OnInit {
           } else if (event.type === HttpEventType.Response) {
             let response: any = event.body;
             this.client = response.client as Client;
+            this.modalService.notificationUpload.emit(this.client);
             Swal.fire({
               position: 'center',
               icon: 'success',
