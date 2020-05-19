@@ -24,12 +24,13 @@
       <tbody>
       <tr *ngFor="let client of clients">
         <td>
-          <button type="button"
-                  (click)="openModal(client)"
-                  class="btn btn-success btn-sm"
-                  name="edit">{{client.id}}
-          </button>
-          </td>
+          <img *ngIf="client?.photo" (click)="openModal(client)"
+               src="http://localhost:8080/api/uploads/img/{{client.photo}}"
+               class="img-thumbnail" style="width: 64px;cursor: pointer">
+          <img *ngIf="!client?.photo" (click)="openModal(client)"
+               src="http://localhost:8080/images/no_user.png"
+               class="img-thumbnail" style="width: 64px;cursor: pointer">
+        </td>
         <td>{{client.firstName}}</td>
         <td>{{client.lastName}}</td>
         <td>{{client.id}}</td>
@@ -45,6 +46,6 @@
       </tr>
       </tbody>
     </table>
-  <app-paginator *ngIf="pagination" [pagination]="pagination"></app-paginator>
+    <app-paginator *ngIf="pagination" [pagination]="pagination"></app-paginator>
   </div>
 </div>
