@@ -1,6 +1,7 @@
 package com.spring.boot.api.controller;
 
 import com.spring.boot.api.model.entity.Client;
+import com.spring.boot.api.model.entity.Region;
 import com.spring.boot.api.model.service.IClientService;
 import com.spring.boot.api.model.service.IUploadFileService;
 import org.springframework.core.io.Resource;
@@ -138,6 +139,7 @@ public class ClientRestController {
             currentClient.setLastName(client.getLastName());
             currentClient.setEmail(client.getEmail());
             currentClient.setCreateAt(client.getCreateAt());
+            currentClient.setRegion(client.getRegion());
             clientService.save(currentClient);
         } catch (DataAccessException ex) {
             response.put("message", "An error occurred during update of database.");
@@ -218,5 +220,10 @@ public class ClientRestController {
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=\"" + resource.getFilename() + "\"");
         return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/clients/regions")
+    public List<Region> listOfRegions() {
+        return clientService.findAllRegion();
     }
 }

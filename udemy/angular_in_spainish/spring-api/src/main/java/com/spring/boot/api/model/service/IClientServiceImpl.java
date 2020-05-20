@@ -2,6 +2,7 @@ package com.spring.boot.api.model.service;
 
 import com.spring.boot.api.model.dao.IClientDao;
 import com.spring.boot.api.model.entity.Client;
+import com.spring.boot.api.model.entity.Region;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -46,5 +47,10 @@ public class IClientServiceImpl implements IClientService {
     @Transactional
     public void delete(Long id) {
         clientDao.deleteById(id);
+    }
+
+    @Override
+    public List<Region> findAllRegion() {
+        return clientDao.findAllRegion();
     }
 }

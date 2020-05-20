@@ -1,6 +1,7 @@
 package com.spring.boot.api.model.service;
 
 import com.spring.boot.api.model.entity.Client;
+import com.spring.boot.api.model.entity.Region;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,4 +18,6 @@ public interface IClientService {
     Client save(Client client);
 
     void delete(Long id);
+
+    List<Region> findAllRegion();
 }
