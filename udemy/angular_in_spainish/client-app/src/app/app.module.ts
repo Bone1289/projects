@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'clients/form', component: FormComponent},
   {path: 'clients/form/:id', component: FormComponent},
   {path: 'clients/view/:id', component: DetailsComponent}
-]
+];
 
 @NgModule({
   declarations: [
