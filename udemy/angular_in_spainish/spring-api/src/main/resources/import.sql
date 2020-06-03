@@ -25,8 +25,8 @@ INSERT INTO `client` (`region_id`, `create_at`, `email`, `first_name`, `last_nam
 INSERT INTO `client` (`region_id`, `create_at`, `email`, `first_name`, `last_name`) VALUES (7,now(), 'fourth.last1@emai.com', 'Fourth', 'Last');
 INSERT INTO `client` (`region_id`, `create_at`, `email`, `first_name`, `last_name`) VALUES (1,now(), 'primera.name1@email.com', 'Primera', 'Last');
 
-INSERT INTO `users` (`enabled`, `password`, `username`) VALUES (1, '$2a$10$RmSrqCooaFKrXCIqktv5v.z4tBXgbu9my0Q4IKjsIp.fGIqE/.YCm', 'admin');
-INSERT INTO `users` (`enabled`, `password`, `username`) VALUES (1, '$2a$10$J0/NaFkJrMTisw6Xp/SIwey285sZNugrzzzHXeUtwuDvnxpUKYAHa', 'bogdan');
+INSERT INTO `users` (`enabled`, `password`, `username`,`first_name`,`last_name`, `email`) VALUES (1, '$2a$10$RmSrqCooaFKrXCIqktv5v.z4tBXgbu9my0Q4IKjsIp.fGIqE/.YCm', 'admin','admin', 'admin', 'admin@admin.com');
+INSERT INTO `users` (`enabled`, `password`, `username`,`first_name`,`last_name`, `email`) VALUES (1, '$2a$10$J0/NaFkJrMTisw6Xp/SIwey285sZNugrzzzHXeUtwuDvnxpUKYAHa', 'bogdan', 'Spring', 'One', 'spring@one.com');
 
 INSERT INTO `roles` (`name`) VALUES ('ROLE_USER');
 INSERT INTO `roles` (`name`) VALUES ('ROLE_ADMIN');
