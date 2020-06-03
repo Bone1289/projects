@@ -24,3 +24,15 @@ INSERT INTO `client` (`region_id`, `create_at`, `email`, `first_name`, `last_nam
 INSERT INTO `client` (`region_id`, `create_at`, `email`, `first_name`, `last_name`) VALUES (6,now(), 'third.name1@email.com', 'Third', 'Last');
 INSERT INTO `client` (`region_id`, `create_at`, `email`, `first_name`, `last_name`) VALUES (7,now(), 'fourth.last1@emai.com', 'Fourth', 'Last');
 INSERT INTO `client` (`region_id`, `create_at`, `email`, `first_name`, `last_name`) VALUES (1,now(), 'primera.name1@email.com', 'Primera', 'Last');
+
+INSERT INTO `users` (`enabled`, `password`, `username`) VALUES (1, '$2a$10$RmSrqCooaFKrXCIqktv5v.z4tBXgbu9my0Q4IKjsIp.fGIqE/.YCm', 'admin');
+INSERT INTO `users` (`enabled`, `password`, `username`) VALUES (1, '$2a$10$J0/NaFkJrMTisw6Xp/SIwey285sZNugrzzzHXeUtwuDvnxpUKYAHa', 'bogdan');
+
+INSERT INTO `roles` (`name`) VALUES ('ROLE_USER');
+INSERT INTO `roles` (`name`) VALUES ('ROLE_ADMIN');
+
+INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES ('1', '1');
+INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES ('2', '2');
+INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES ('2', '1');
+
+
