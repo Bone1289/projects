@@ -21,8 +21,21 @@ export class ClientService {
               private router: Router) {
   }
 
+  private isAuthorized(e): boolean {
+    if (e.status == 401 || e.status == 403) {
+      this.router.navigate(['/login']);
+      return true;
+    }
+    return false;
+  }
+
   getRegions(): Observable<Region[]> {
-    return this.http.get<Region[]>(this.urlClientEndpoint + "/regions");
+    return this.http.get<Region[]>(this.urlClientEndpoint + "/regions").pipe(
+      catchError(e => {
+        this.isAuthorized(e);
+        return throwError(e);
+      })
+    );
   }
 
   getClients(page): Observable<any> {
@@ -41,6 +54,10 @@ export class ClientService {
   getClient(id): Observable<Client> {
     return this.http.get<Client>(`${this.urlClientEndpoint}/${id}`).pipe(
       catchError(e => {
+        if (this.isAuthorized(e)) {
+          return throwError(e);
+        }
+
         if (e.status == 400) {
           return throwError(e);
         }
@@ -56,6 +73,10 @@ export class ClientService {
   create(client: Client): Observable<ClientResponse> {
     return this.http.post<ClientResponse>(this.urlClientEndpoint, client, {headers: this.httpHeaders}).pipe(
       catchError(e => {
+        if (this.isAuthorized(e)) {
+          return throwError(e);
+        }
+
         if (e.status == 400) {
           return throwError(e);
         }
@@ -70,6 +91,10 @@ export class ClientService {
   update(client: Client): Observable<ClientResponse> {
     return this.http.put<ClientResponse>(`${this.urlClientEndpoint}/${client.id}`, client, {headers: this.httpHeaders}).pipe(
       catchError(e => {
+        if (this.isAuthorized(e)) {
+          return throwError(e);
+        }
+
         console.error(e.error.message);
         Swal.fire(e.error.message, e.error.error, 'error');
         return throwError(e);
@@ -80,6 +105,10 @@ export class ClientService {
   deleteClient(id): Observable<ClientResponse> {
     return this.http.delete<ClientResponse>(`${this.urlClientEndpoint}/${id}`, {headers: this.httpHeaders}).pipe(
       catchError(e => {
+        if (this.isAuthorized(e)) {
+          return throwError(e);
+        }
+
         console.error(e.error.message);
         Swal.fire(e.error.message, e.error.error, 'error');
         return throwError(e);
@@ -96,6 +125,11 @@ export class ClientService {
       reportProgress: true
     });
 
-    return this.http.request(req);
+    return this.http.request(req).pipe(
+      catchError(e => {
+        this.isAuthorized(e);
+        return throwError(e);
+      })
+    );
   }
 }
