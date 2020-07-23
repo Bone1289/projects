@@ -86,8 +86,7 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     let payload = this.getDataToken(this.token);
-    let username = payload.user_name;
-    return username && username.length > 0;
+    return payload!=null && payload.user_name && payload.user_name.length > 0;
   }
 
   hasRole(role: string): boolean {
