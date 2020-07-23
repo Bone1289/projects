@@ -139,8 +139,7 @@ export class ClientService {
     formData.append("file", fileInfo);
     formData.append("id", id);
 
-    let httpHeaders
-    new HttpHeaders();
+    let httpHeaders = new HttpHeaders();
     let token = this.authService.token;
     if (token != null) {
       httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token)
@@ -148,7 +147,7 @@ export class ClientService {
 
     const req = new HttpRequest('POST', `${this.urlClientEndpoint}/uploads`, formData, {
       reportProgress: true,
-      headers: this.appendAuthorizationHeader()
+      headers: httpHeaders
     });
 
     return this.http.request(req).pipe(
