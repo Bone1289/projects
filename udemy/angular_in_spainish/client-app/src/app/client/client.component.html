@@ -4,7 +4,10 @@
   <div class="card-body text-primary">
     <h5 class="card-title">Client List</h5>
     <div class="my-2 text-left">
-      <button class="btn btn-primary btn-rounded" type="button" [routerLink]="['/clients/form']">Create client</button>
+      <button
+        *ngIf="authService.hasRole('ROLE_ADMIN')"
+        class="btn btn-primary btn-rounded" type="button" [routerLink]="['/clients/form']">Create client
+      </button>
     </div>
     <div *ngIf="clients?.length ==0" class="alert alert-info">
       No records please create new clients.
@@ -12,18 +15,18 @@
     <table class="table table-bordered table-striped" *ngIf="clients?.length>0">
       <thead>
       <tr>
-        <th>id</th>
+        <th  *ngIf="authService.hasRole('ROLE_USER')">id</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
         <th>Create Day</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th *ngIf="authService.hasRole('ROLE_ADMIN')">Edit</th>
+        <th *ngIf="authService.hasRole('ROLE_ADMIN')">Delete</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let client of clients">
-        <td>
+        <td *ngIf="authService.hasRole('ROLE_USER')">
           <img *ngIf="client?.photo" (click)="openModal(client)"
                src="http://localhost:8080/api/uploads/img/{{client.photo}}"
                class="img-thumbnail" style="width: 64px;cursor: pointer">
@@ -35,11 +38,11 @@
         <td>{{client.lastName}}</td>
         <td>{{client.id}}</td>
         <td>{{client.createAt}}</td>
-        <td>
+        <td *ngIf="authService.hasRole('ROLE_ADMIN')">
           <button type="button" class="btn btn-primary" name="edit" [routerLink]="['/clients/form', client.id]">Edit
           </button>
         </td>
-        <td>
+        <td *ngIf="authService.hasRole('ROLE_ADMIN')">
           <button type="button" class="btn btn-danger" name="delete" (click)="delete(client)">Delete
           </button>
         </td>

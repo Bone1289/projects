@@ -5,6 +5,7 @@ import {Client} from "../client";
 import Swal from "sweetalert2";
 import {HttpEventType} from "@angular/common/http";
 import {ModalService} from "./modal.service";
+import {AuthService} from "../../users/auth.service";
 
 @Component({
   selector: 'client-details',
@@ -19,7 +20,8 @@ export class DetailsComponent implements OnInit {
 
   constructor(private clientService: ClientService,
               private activatedRoute: ActivatedRoute,
-              public modalService: ModalService
+              public modalService: ModalService,
+              public authService: AuthService
   ) {
   }
 
