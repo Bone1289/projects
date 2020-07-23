@@ -18,6 +18,7 @@ import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
 import localUs from '@angular/common/locales/en-GB';
 import {DetailsComponent} from './client/details/details.component';
 import {LoginComponent} from './login/login.component';
+import {AuthGuard} from "./users/guards/auth.guard";
 
 registerLocaleData(localUs, 'en')
 
@@ -25,8 +26,8 @@ const routes: Routes = [
   {path: '', redirectTo: '/clients', pathMatch: 'full'},
   {path: 'clients', component: ClientComponent},
   {path: 'clients/page/:page', component: ClientComponent},
-  {path: 'clients/form', component: FormComponent},
-  {path: 'clients/form/:id', component: FormComponent},
+  {path: 'clients/form', component: FormComponent, canActivate: [AuthGuard]},
+  {path: 'clients/form/:id', component: FormComponent, canActivate: [AuthGuard]},
   {path: 'clients/view/:id', component: DetailsComponent},
   {path: 'login', component: LoginComponent}
 ];
