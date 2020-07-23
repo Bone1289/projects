@@ -67,7 +67,7 @@
           <select class="form-group" id="region" name="region" style="width: 500px"
                   [compareWith]="compareRegion"
                   [(ngModel)]="client.region">
-            <option [ngValue]="undefined" [disabled]="true">Morti Mati de select</option>
+            <option *ngIf="client.region == null" [ngValue]="undefined" [disabled]="true">Morti Mati de select</option>
             <option *ngFor="let region of regions" [ngValue]="region">{{region.name}}</option>
           </select>
         </div>
