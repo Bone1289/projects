@@ -19,8 +19,6 @@ export class AuthService {
   }
 
   public get user(): User {
-
-
     if (this._user == null) {
       return this._user;
     } else if (this._user == null && sessionStorage.getItem(AuthService.USER_STORAGE_KEY) != null) {
@@ -37,7 +35,7 @@ export class AuthService {
   }
 
   login(user: User): Observable<any> {
-    const credential = btoa("angularapp" + ":" + '12345');
+    const credential = btoa("angularapp" + ":" + 'testtest');
 
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
