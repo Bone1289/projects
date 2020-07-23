@@ -19,19 +19,23 @@ export class AuthService {
   }
 
   public get user(): User {
-    if (this._user == null) {
+    if (this._user != null) {
       return this._user;
     } else if (this._user == null && sessionStorage.getItem(AuthService.USER_STORAGE_KEY) != null) {
       this._user = JSON.parse(sessionStorage.getItem(AuthService.USER_STORAGE_KEY)) as User;
+      return this._user;
     }
+    return new User();
   }
 
   public get token(): string {
     if (this._token != null) {
       return this._token;
     } else if (this._token == null && sessionStorage.getItem(AuthService.TOKEN_STORAGE_KEY) != null) {
-      this._token = JSON.parse(sessionStorage.getItem(AuthService.TOKEN_STORAGE_KEY)) as string;
+      this._token = sessionStorage.getItem(AuthService.TOKEN_STORAGE_KEY);
+      return this._token;
     }
+    return null;
   }
 
   login(user: User): Observable<any> {
