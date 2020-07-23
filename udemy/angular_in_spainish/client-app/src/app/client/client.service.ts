@@ -32,8 +32,14 @@ export class ClientService {
   }
 
   private isAuthorized(e): boolean {
-    if (e.status == 401 || e.status == 403) {
+    if (e.status == 401) {
       this.router.navigate(['/login']);
+      return true;
+    }
+
+    if (e.status == 403) {
+      Swal.fire("Access denied", `Hello ${this.authService.user.username} you don't have access!`, 'warning');
+      this.router.navigate(['/clients']);
       return true;
     }
     return false;
