@@ -19,6 +19,7 @@ import localUs from '@angular/common/locales/en-GB';
 import {DetailsComponent} from './client/details/details.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from "./users/guards/auth.guard";
+import {RoleGuard} from "./users/guards/role.guard";
 
 registerLocaleData(localUs, 'en')
 
@@ -26,8 +27,8 @@ const routes: Routes = [
   {path: '', redirectTo: '/clients', pathMatch: 'full'},
   {path: 'clients', component: ClientComponent},
   {path: 'clients/page/:page', component: ClientComponent},
-  {path: 'clients/form', component: FormComponent, canActivate: [AuthGuard]},
-  {path: 'clients/form/:id', component: FormComponent, canActivate: [AuthGuard]},
+  {path: 'clients/form', component: FormComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'ROLE_ADMIN'}},
+  {path: 'clients/form/:id', component: FormComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'ROLE_ADMIN'}},
   {path: 'clients/view/:id', component: DetailsComponent},
   {path: 'login', component: LoginComponent}
 ];
