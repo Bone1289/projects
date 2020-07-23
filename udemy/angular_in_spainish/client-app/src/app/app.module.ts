@@ -6,7 +6,7 @@ import {HeaderComponent} from "./header/header.component";
 import {FooterComponent} from './footer/footer.component';
 import {ClientComponent} from './client/client.component';
 import {RouterModule, Routes} from "@angular/router";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormComponent} from './client/form.component';
 import {FormsModule} from "@angular/forms";
 import {PaginatorComponent} from './paginator/paginator.component';
@@ -20,6 +20,7 @@ import {DetailsComponent} from './client/details/details.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from "./users/guards/auth.guard";
 import {RoleGuard} from "./users/guards/role.guard";
+import {TokenInterceptor} from "./users/interceptor/token.interceptor";
 
 registerLocaleData(localUs, 'en')
 
@@ -46,7 +47,10 @@ const routes: Routes = [
     MatDatepickerModule,
     MatMomentDateModule
   ],
-  providers: [{provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}],
+  providers: [
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}},
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
