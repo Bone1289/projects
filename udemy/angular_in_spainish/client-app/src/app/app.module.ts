@@ -21,6 +21,7 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from "./users/guards/auth.guard";
 import {RoleGuard} from "./users/guards/role.guard";
 import {TokenInterceptor} from "./users/interceptor/token.interceptor";
+import {AuthInterceptor} from "./users/interceptor/auth.interceptor";
 
 registerLocaleData(localUs, 'en')
 
@@ -50,6 +51,7 @@ const routes: Routes = [
   providers: [
     {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}},
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })
