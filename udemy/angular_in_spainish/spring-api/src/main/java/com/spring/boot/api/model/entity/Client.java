@@ -8,7 +8,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "client")
@@ -43,6 +45,13 @@ public class Client implements Serializable {
     @JoinColumn(name = "region_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handle"})
     private Region region;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client", cascade = CascadeType.ALL)
+    private List<Invoice> invoices;
+
+    public Client() {
+        this.invoices = new ArrayList<>();
+    }
 
     @PrePersist
     public void prePersist() {
@@ -103,5 +112,13 @@ public class Client implements Serializable {
 
     public void setRegion(Region region) {
         this.region = region;
+    }
+
+    public List<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
     }
 }

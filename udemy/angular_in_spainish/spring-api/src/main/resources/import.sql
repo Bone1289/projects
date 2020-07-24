@@ -35,4 +35,20 @@ INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES ('1', '1');
 INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES ('2', '2');
 INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES ('2', '1');
 
+INSERT INTO `spring-spain`.`products` (`create_at`, `name`, `price`) VALUES (NOW(), 'IPhone', '100');
+INSERT INTO `spring-spain`.`products` (`create_at`, `name`, `price`) VALUES (NOW(), 'MacBook Pro', '2000');
+INSERT INTO `spring-spain`.`products` (`create_at`, `name`, `price`) VALUES (NOW(), 'Bike', '10');
+INSERT INTO `spring-spain`.`products` (`create_at`, `name`, `price`) VALUES (NOW(), 'Samisug', '200');
+INSERT INTO `spring-spain`.`products` (`create_at`, `name`, `price`) VALUES (NOW(), 'Playstation', '100');
+INSERT INTO `spring-spain`.`products` (`create_at`, `name`, `price`) VALUES (NOW(), 'XBox', '100');
+
+INSERT INTO `spring-spain`.`invoices` (`create_at`, `description`, `observation`, `client_id`) VALUES (NOW(), 'Console', 'Console Mishto', '1');
+INSERT INTO `spring-spain`.`invoice_item` (`quantity`, `product_id`, `invoice_id`) VALUES ('3', '5', '1');
+INSERT INTO `spring-spain`.`invoice_item` (`quantity`, `product_id`, `invoice_id`) VALUES ('1', '6', '1');
+
+INSERT INTO `spring-spain`.`invoices` (`create_at`, `description`, `observation`, `client_id`) VALUES (NOW(), 'Mobile', 'Mobile', '2');
+INSERT INTO `spring-spain`.`invoice_item` (`quantity`, `product_id`, `invoice_id`) VALUES ('1', '1', '2');
+INSERT INTO `spring-spain`.`invoice_item` (`quantity`, `product_id`, `invoice_id`) VALUES ('2', '4', '2');
+
+
 
