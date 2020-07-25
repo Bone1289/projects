@@ -1,5 +1,7 @@
 package com.spring.boot.api.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,11 +24,13 @@ public class Invoice implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date createAt;
 
+    @JsonIgnoreProperties({"invoices", "hibernateLazyInitializer", "handle"})
     @ManyToOne(fetch = FetchType.LAZY)
     private Client client;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "invoice_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handle"})
     private List<InvoiceItem> invoiceItems;
 
     public Invoice() {
@@ -88,7 +92,7 @@ public class Invoice implements Serializable {
 
     public Double getTotal() {
         return invoiceItems.stream()
-                .map(InvoiceItem::calculateInvoice)
+                .map(InvoiceItem::getAmount)
                 .reduce(0.0, Double::sum);
     }
 }

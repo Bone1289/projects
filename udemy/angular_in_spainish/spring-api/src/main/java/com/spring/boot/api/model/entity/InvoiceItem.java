@@ -1,10 +1,13 @@
 package com.spring.boot.api.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "invoice_item")
-public class InvoiceItem {
+public class InvoiceItem implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,14 +16,11 @@ public class InvoiceItem {
     private Integer quantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handle"})
     private Product product;
 
-    public Double getPrice() {
+    public Double getAmount() {
         return this.quantity.doubleValue() * product.getPrice();
-    }
-
-    public Double calculateInvoice() {
-        return quantity.doubleValue();
     }
 
     public Long getId() {
@@ -37,5 +37,13 @@ public class InvoiceItem {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
