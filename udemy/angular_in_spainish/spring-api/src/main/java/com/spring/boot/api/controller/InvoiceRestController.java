@@ -16,7 +16,7 @@ public class InvoiceRestController {
         this.clientService = clientService;
     }
 
-    @GetMapping("/invoice/{id}")
+    @GetMapping("/invoices/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Invoice show(@PathVariable Long id) {
         return clientService.findInvoiceById(id);
