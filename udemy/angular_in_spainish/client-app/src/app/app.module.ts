@@ -22,6 +22,7 @@ import {AuthGuard} from "./users/guards/auth.guard";
 import {RoleGuard} from "./users/guards/role.guard";
 import {TokenInterceptor} from "./users/interceptor/token.interceptor";
 import {AuthInterceptor} from "./users/interceptor/auth.interceptor";
+import {DetailsInvoiceComponent} from "./invoices/details-invoice.component";
 
 registerLocaleData(localUs, 'en')
 
@@ -32,12 +33,15 @@ const routes: Routes = [
   {path: 'clients/form', component: FormComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'ROLE_ADMIN'}},
   {path: 'clients/form/:id', component: FormComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'ROLE_ADMIN'}},
   {path: 'clients/view/:id', component: DetailsComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'invoice/:id', component: DetailsInvoiceComponent}
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, HeaderComponent, FooterComponent, ClientComponent, FormComponent, PaginatorComponent, DetailsComponent, LoginComponent
+    AppComponent, HeaderComponent, FooterComponent,
+    ClientComponent, FormComponent, PaginatorComponent,
+    DetailsComponent, LoginComponent, DetailsInvoiceComponent
   ],
   imports: [
     BrowserModule,
