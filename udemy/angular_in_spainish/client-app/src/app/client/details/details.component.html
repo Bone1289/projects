@@ -48,6 +48,34 @@
                      class="img-thumbnail">
               </div>
             </div>
+            <div class="row">
+              <div class="col-sm">
+                <div class="alert alert-info my-4"
+                     *ngIf="client.invoices.length==0">
+                  No invoice is attached to client {{client.firstName}} {{client.lastName}}
+                </div>
+
+                <table class="table table-bordered table-striped my-4"
+                       *ngIf="client.invoices.length>0">
+                  <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Description</th>
+                    <th>Create at</th>
+                    <th>Total</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let invoice of client.invoices">
+                    <td>{{invoice.id}}</td>
+                    <td>{{invoice.description}}</td>
+                    <td>{{invoice.createAt}}</td>
+                    <td>{{invoice.total}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
             <div class="modal-footer">
               <button (click)="closeModal()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary">Save changes</button>

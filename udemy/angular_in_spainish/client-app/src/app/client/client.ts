@@ -9,5 +9,5 @@ export class Client {
   email: string;
   photo: string;
   region: Region;
-  invoice: Array<Invoice> = [];
+  invoices: Array<Invoice> = [];
 }
