@@ -1,6 +1,7 @@
 package com.spring.boot.api.model.service;
 
 import com.spring.boot.api.model.entity.Client;
+import com.spring.boot.api.model.entity.Invoice;
 import com.spring.boot.api.model.entity.Region;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,4 +21,10 @@ public interface IClientService {
     void delete(Long id);
 
     List<Region> findAllRegion();
+
+    Invoice findInvoiceById(Long id);
+
+    Invoice saveInvoice(Invoice invoice);
+
+    void deleteInvoiceById(Long id);
 }

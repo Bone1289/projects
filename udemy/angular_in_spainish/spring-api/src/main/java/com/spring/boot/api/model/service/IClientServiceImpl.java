@@ -1,7 +1,9 @@
 package com.spring.boot.api.model.service;
 
 import com.spring.boot.api.model.dao.IClientDao;
+import com.spring.boot.api.model.dao.IInvoiceDao;
 import com.spring.boot.api.model.entity.Client;
+import com.spring.boot.api.model.entity.Invoice;
 import com.spring.boot.api.model.entity.Region;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,9 +16,12 @@ import java.util.List;
 public class IClientServiceImpl implements IClientService {
 
     private final IClientDao clientDao;
+    private final IInvoiceDao invoiceDao;
 
-    public IClientServiceImpl(IClientDao clientDao) {
+
+    public IClientServiceImpl(IClientDao clientDao, IInvoiceDao invoiceDao) {
         this.clientDao = clientDao;
+        this.invoiceDao = invoiceDao;
     }
 
     @Override
@@ -50,7 +55,26 @@ public class IClientServiceImpl implements IClientService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Region> findAllRegion() {
         return clientDao.findAllRegion();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Invoice findInvoiceById(Long id) {
+        return invoiceDao.findById(id).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public Invoice saveInvoice(Invoice invoice) {
+        return invoiceDao.save(invoice);
+    }
+
+    @Override
+    @Transactional
+    public void deleteInvoiceById(Long id) {
+        invoiceDao.deleteById(id);
     }
 }
