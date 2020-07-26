@@ -5,7 +5,7 @@ export class Invoice {
   id: number;
   description: string;
   observation: string;
-  items: Array<InvoiceItem> = [];
+  invoiceItems: Array<InvoiceItem> = [];
   client: Client;
   total: number;
   createAt: string;
