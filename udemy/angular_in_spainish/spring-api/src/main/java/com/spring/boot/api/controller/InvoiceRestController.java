@@ -21,4 +21,10 @@ public class InvoiceRestController {
     public Invoice show(@PathVariable Long id) {
         return clientService.findInvoiceById(id);
     }
+
+    @DeleteMapping("/invoices/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        clientService.deleteInvoiceById(id);
+    }
 }
