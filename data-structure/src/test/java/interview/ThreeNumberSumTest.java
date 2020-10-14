@@ -1,5 +1,6 @@
 package interview;
 
+import array.ThreeNumberSum;
 import org.junit.Test;
 
 import java.util.ArrayList;

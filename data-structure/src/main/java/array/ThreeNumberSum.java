@@ -1,4 +1,4 @@
-package interview;
+package array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,6 +27,7 @@ public class ThreeNumberSum {
                 }
             }
         }
+
         return triplets;
     }
 }
