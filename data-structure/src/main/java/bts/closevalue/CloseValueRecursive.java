@@ -1,15 +1,15 @@
-package interview.bts.closevalue;
+package bts.closevalue;
 
-import interview.bts.BST;
+import bts.BST;
 
 public class CloseValueRecursive implements CloseValueStrategy {
 
     @Override
     public int findClosestValueInBst(BST tree, int target) {
-        return findCloseValueInBst(tree, target, Double.MAX_VALUE);
+        return findCloseValueInBst(tree, target, tree.value);
     }
 
-    private static int findCloseValueInBst(BST tree, int target, double closest) {
+    private static int findCloseValueInBst(BST tree, int target, int closest) {
         if (Math.abs(target - closest) > Math.abs(target - tree.value)) {
             closest = tree.value;
         }
@@ -18,7 +18,7 @@ public class CloseValueRecursive implements CloseValueStrategy {
         } else if (target > tree.value && tree.right != null) {
             return findCloseValueInBst(tree.right, target, closest);
         } else {
-            return (int) closest;
+            return closest;
         }
     }
 }

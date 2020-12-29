@@ -1,4 +1,4 @@
-package interview.bts;
+package bts;
 
 public class BSTV2 {
 

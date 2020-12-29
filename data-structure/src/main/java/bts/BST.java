@@ -1,6 +1,6 @@
-package interview.bts;
+package bts;
 
-import interview.bts.closevalue.CloseValueStrategy;
+import bts.closevalue.CloseValueStrategy;
 
 public class BST {
 
@@ -84,7 +84,7 @@ public class BST {
                         currentNode.left = currentNode.right.left;
                         currentNode.right = currentNode.right.right;
                     } else {
-                        currentNode.value = 0;
+
                     }
                 } else if (parentNode.left == currentNode) {
                     parentNode.left = currentNode.left != null ? currentNode.left : currentNode.right;
