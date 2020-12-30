@@ -1,0 +1,4 @@
+spring:
+  kafka:
+    consumer:
+      enable-auto-commit: true
