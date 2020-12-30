@@ -1,5 +1,6 @@
-package interview;
+package array;
 
+import array.TwoNumberSum;
 import org.junit.Test;
 
 import java.util.Arrays;

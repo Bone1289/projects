@@ -1,6 +1,6 @@
-package interview.bts.closevalue;
+package bts.closevalue;
 
-import interview.bts.BST;
+import bts.BST;
 
 public interface CloseValueStrategy {
     int findClosestValueInBst(BST tree, int target);

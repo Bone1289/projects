@@ -1,12 +1,12 @@
-package interview.bts.closevalue;
+package bts.closevalue;
 
-import interview.bts.BST;
+import bts.BST;
 
 public class CloseValueIterative implements CloseValueStrategy {
     @Override
     public int findClosestValueInBst(BST tree, int target) {
         BST currentNode = tree;
-        double closest = Double.MAX_VALUE;
+        int closest = currentNode.value;
         while (currentNode != null) {
             if (Math.abs(target - closest) > Math.abs(target - currentNode.value)) {
                 closest = currentNode.value;
@@ -20,6 +20,6 @@ public class CloseValueIterative implements CloseValueStrategy {
                 break;
             }
         }
-        return (int) closest;
+        return closest;
     }
 }

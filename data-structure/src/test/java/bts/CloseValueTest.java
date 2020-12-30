@@ -1,7 +1,6 @@
-package interview.bts;
+package bts;
 
-import interview.bts.closevalue.CloseValueIterative;
-import interview.bts.closevalue.CloseValueRecursive;
+import bts.closevalue.CloseValueIterative;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
