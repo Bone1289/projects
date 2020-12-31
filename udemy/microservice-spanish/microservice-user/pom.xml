@@ -9,13 +9,13 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.udemy.microservice.user</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>microservice-user</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>microservice-user</name>
     <description>Udemy Microservice - User</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>12</java.version>
     </properties>
 
     <dependencies>
