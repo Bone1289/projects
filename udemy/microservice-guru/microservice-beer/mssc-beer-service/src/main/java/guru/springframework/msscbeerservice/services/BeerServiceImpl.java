@@ -47,8 +47,8 @@ public class BeerServiceImpl implements BeerService {
 		Pageable beerPageable = beerPage.getPageable();
 
 		beerPagedList = new BeerPagedList(beerPage.getContent().stream()
-				.map(beer -> showOnhandInventory ? beerMapper.beerToBeerDto(beer) :
-						beerMapper.beerToBeerDtoWithInventory(beer))
+				.map(beer -> showOnhandInventory ? beerMapper.beerToBeerDtoWithInventory(beer) :
+						beerMapper.beerToBeerDto(beer))
 				.collect(Collectors.toList()),
 				PageRequest.of(beerPageable.getPageNumber(), beerPageable.getPageSize()),
 				beerPage.getTotalElements()
@@ -61,8 +61,7 @@ public class BeerServiceImpl implements BeerService {
 	@Override
 	public BeerDto getById(UUID beerId, boolean showInventoryOnhand) {
 		Beer beer = beerRepository.findById(beerId).orElseThrow(NotFoundException::new);
-		return showInventoryOnhand ? beerMapper.beerToBeerDto(beer) :
-				beerMapper.beerToBeerDtoWithInventory(beer);
+		return showInventoryOnhand ? beerMapper.beerToBeerDtoWithInventory(beer) : beerMapper.beerToBeerDto(beer);
 	}
 
 	@Override
@@ -80,5 +79,10 @@ public class BeerServiceImpl implements BeerService {
 		beer.setUpc(beerDto.getUpc());
 
 		return beerMapper.beerToBeerDto(beerRepository.save(beer));
+	}
+	@Cacheable(cacheNames = "beerUpcCache")
+	@Override public BeerDto getByUpc(String upc) {
+		return beerMapper.beerToBeerDto(beerRepository.findByUpc(upc).orElseThrow(NotFoundException::new));
+
 	}
 }

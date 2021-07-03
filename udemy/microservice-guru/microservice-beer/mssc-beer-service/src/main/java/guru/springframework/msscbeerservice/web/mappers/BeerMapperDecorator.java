@@ -19,13 +19,13 @@ public class BeerMapperDecorator implements BeerMapper {
 		this.beerMapper = beerMapper;
 	}
 
-	@Override public BeerDto beerToBeerDto(Beer beer) {
+	@Override public BeerDto beerToBeerDtoWithInventory(Beer beer) {
 		BeerDto dto = beerMapper.beerToBeerDto(beer);
 		dto.setQuantityOnHand(beerInventoryService.getOnHandInventory(dto.getId()));
 		return dto;
 	}
 
-	@Override public BeerDto beerToBeerDtoWithInventory(Beer beer) {
+	@Override public BeerDto beerToBeerDto(Beer beer) {
 		return beerMapper.beerToBeerDto(beer);
 	}
 
