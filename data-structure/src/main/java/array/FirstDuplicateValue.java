@@ -1,5 +1,8 @@
 package array;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Given an array of integers between 1 and n, inclusive, where n is the length of the array, write a function that
  * returns the first integer that appears more than once (when the array is read from left to right).
@@ -24,4 +27,34 @@ package array;
  * after the second 3.
  */
 public class FirstDuplicateValue {
+	//	public int firstDuplicateValue(int[] array) {
+	//		Set<Integer> seen = new HashSet<>();
+	//
+	//		for (int value : array) {
+	//			if (seen.contains(value)) return value;
+	//			seen.add(value);
+	//		}
+	//		return -1;
+	//	}
+
+	public int firstDuplicateValue(int[] array) {
+		for (Integer value : array) {
+			int absValue = Math.abs(value);
+			if (array[absValue - 1] < 0) {
+				return absValue;
+			} else {
+				array[absValue - 1] *= -1;
+			}
+		}
+
+		return -1;
+	}
+
+	public static void main(String[] args) {
+		FirstDuplicateValue firstDuplicateValue = new FirstDuplicateValue();
+
+		int i = firstDuplicateValue.firstDuplicateValue(new int[] { 1, 2, 1, 2 });
+		System.out.println("Fist Duplicate is " + i);
+
+	}
 }
